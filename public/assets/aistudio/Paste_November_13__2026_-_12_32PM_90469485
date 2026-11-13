@@ -1,0 +1,1083 @@
+Writing
+
+# MASTER PROMPT — BUILD A PREMIUM, CLIENT-READY LUXURY FURNITURE & INTERIOR DESIGN E-COMMERCE WEBSITE
+
+Act as a world-class UI/UX designer, creative director, senior frontend developer, e-commerce architect, and conversion optimization specialist. Build a complete, production-quality, fully responsive luxury furniture and interior design website inspired by the uploaded visual reference.
+
+Your task is to transform the reference into an original, sophisticated, commercially viable website that looks like it was designed by a premium international digital agency.
+
+Do not simply create a static landing page. Build a complete, polished, interactive website with professional layouts, realistic content, high-quality imagery, responsive navigation, product presentation, and functional user interactions.
+
+The website must be ready for deployment on Hostinger.
+
+---
+
+## 1\. CORE CREATIVE DIRECTION
+
+Create an original luxury furniture and interior lifestyle brand.
+
+The visual direction should communicate:
+
+- Understated luxury.
+- Modern architectural interiors.
+- Timeless furniture craftsmanship.
+- Natural materials and organic textures.
+- Minimalist European-inspired design.
+- Warm, welcoming residential spaces.
+- Premium editorial art direction.
+- Sophisticated contemporary living.
+
+The overall aesthetic should resemble a high-end interior architecture magazine combined with a premium furniture showroom.
+
+The design should feel warm, elegant, spacious, tactile, and exceptionally refined.
+
+Avoid:
+
+- Generic furniture store templates.
+- Bright, saturated colors.
+- Excessive gradients.
+- Overly rounded UI components.
+- Cartoonish illustrations.
+- Cheap-looking stock imagery.
+- Crowded layouts.
+- Excessive animations.
+- Generic AI-generated website aesthetics.
+
+IMPORTANT BRANDING REQUIREMENT:
+
+Create a completely original brand name, identity, logo, navigation wording, product names, marketing copy, and visual identity.
+
+Do not reuse the brand name, logo, product names, exact text, or business identity from the reference image.
+
+The website should have its own recognizable premium personality.
+
+---
+
+## 2\. TECHNOLOGY AND DEVELOPMENT REQUIREMENTS
+
+Build the website using:
+
+- React.
+- TypeScript.
+- Vite.
+- Tailwind CSS or an equally clean modern styling system.
+- Lucide icons.
+- Modern reusable React components.
+- Responsive CSS Grid and Flexbox.
+- Modern React state management.
+
+Use a clean, maintainable, scalable project structure.
+
+Development requirements:
+
+1. Generate all required files and components.
+2. Implement actual functional interactions.
+3. Use reusable components for navigation, buttons, cards, product listings, and footer elements.
+4. Ensure clean TypeScript without unnecessary errors.
+5. Avoid unnecessary dependencies.
+6. Optimize images and loading performance.
+7. Include proper semantic HTML.
+8. Add accessible labels, keyboard navigation, and appropriate ARIA attributes.
+9. Implement SEO-friendly page titles, descriptions, headings, and image alt text.
+10. Ensure the website can be built into a production-ready static deployment.
+
+Do not leave unfinished sections, TODO comments, fake buttons, empty image containers, or broken links.
+
+If a backend integration is unavailable, implement realistic client-side functionality and clearly separate integration-ready components.
+
+---
+
+## 3\. BRAND IDENTITY AND COLOR SYSTEM
+
+Develop a premium visual identity based on warm architectural neutrals.
+
+Use the following color palette:
+
+| Color | Hex |
+| --- | --- |
+| Warm Ivory | #F7F3ED |
+| Soft Cream | #F1EBE3 |
+| Warm Beige | #E6DDD1 |
+| Sandstone | #C9B8A5 |
+| Taupe | #A39483 |
+| Dark Walnut | #574638 |
+| Charcoal Brown | #292521 |
+| Deep Black | #171614 |
+| Muted Gray | #827B73 |
+| White | #FFFFFF |
+
+Color usage:
+
+- Main page background: warm ivory.
+- Secondary sections: soft cream.
+- Product card backgrounds: warm beige and ivory.
+- Primary typography: deep charcoal.
+- Secondary typography: muted gray.
+- Buttons: deep black or charcoal.
+- Button text: warm white.
+- Dividers: subtle warm gray.
+- Image overlays: subtle transparent charcoal when necessary.
+
+The palette must remain consistent throughout the entire website.
+
+Use subtle color variations to create depth without making the interface visually busy.
+
+---
+
+## 4\. TYPOGRAPHY AND VISUAL HIERARCHY
+
+Typography is a major part of the brand identity.
+
+Use a refined editorial typography combination.
+
+Recommended fonts:
+
+- Headings: Cormorant Garamond or Playfair Display.
+- Body text: Inter or DM Sans.
+- Navigation and small labels: Inter with subtle letter spacing.
+
+Typography direction:
+
+- Large elegant serif headings.
+- Refined editorial subheadings.
+- Clean sans-serif body copy.
+- Small uppercase section labels.
+- Generous line spacing.
+- Carefully controlled text widths.
+
+Desktop typography:
+
+- Main hero heading: 58–76px.
+- Section headings: 38–50px.
+- Subheadings: 22–28px.
+- Body copy: 14–16px.
+- Navigation: 12–13px.
+- Small labels: 9–11px.
+
+Tablet and mobile typography must scale proportionally using responsive CSS and clamp().
+
+Avoid oversized text that breaks the layout.
+
+---
+
+## 5\. HEADER AND NAVIGATION
+
+Create a premium, minimal navigation bar.
+
+Desktop structure:
+
+LEFT:
+
+- Original text-based brand logo.
+- Elegant serif typography.
+- Small optional tagline underneath.
+
+CENTER:
+
+- Collections
+- Spaces
+- Furniture
+- Our Story
+- Journal
+- Contact
+
+RIGHT:
+
+- Search icon.
+- Shopping bag icon with live item count.
+- Prominent "Book a Consultation" button.
+
+Design specifications:
+
+- Height approximately 70–82px.
+- Warm ivory background.
+- Subtle bottom border.
+- Centered vertical alignment.
+- Generous horizontal spacing.
+- Minimal icon styling.
+- No heavy shadows.
+
+Interactions:
+
+- Sticky navigation on scroll.
+- Smooth hover transitions.
+- Animated underline beneath navigation links.
+- Functional search overlay or search panel.
+- Functional shopping bag drawer.
+- Consultation button opens a booking form or consultation section.
+
+Mobile navigation:
+
+- Brand logo on the left.
+- Shopping bag and menu icons on the right.
+- Full-screen or elegant slide-in navigation.
+- Large readable navigation links.
+- Close button.
+- Smooth opening and closing animations.
+- Prevent background scrolling while the menu is open.
+
+Ensure the mobile menu is fully functional.
+
+---
+
+## 6\. HERO SECTION — HIGH-END EDITORIAL EXPERIENCE
+
+This is the most important visual section.
+
+Create a full-width, immersive hero section with a stunning architectural living room photograph.
+
+IMAGE DIRECTION:
+
+Generate or source a high-quality, realistic interior photograph featuring:
+
+- A luxurious contemporary living room.
+- Large floor-to-ceiling glass windows.
+- A sculptural cream or taupe sectional sofa.
+- Natural walnut furniture.
+- Large organic coffee table.
+- Soft neutral cushions.
+- Natural sunlight entering through windows.
+- Stone and wood architectural finishes.
+- Warm natural materials.
+- Beautiful landscape visible outside.
+- Refined minimal accessories.
+
+Photography must resemble a professional luxury interior design editorial shoot.
+
+Avoid illustrations, obvious AI artifacts, distorted furniture, artificial-looking textures, and unrealistic proportions.
+
+LAYOUT:
+
+- Full-width hero image.
+- Approximately 520–600px tall on desktop.
+- Background image covers the entire section.
+- Image focal point should preserve the furniture and architectural details.
+- Apply a subtle dark gradient on the left for text readability.
+
+CONTENT POSITION:
+
+Place the content toward the left side, vertically centered.
+
+Small uppercase eyebrow:
+
+"TIMELESS DESIGN. THOUGHTFUL LIVING."
+
+Main heading:
+
+"Spaces Designed for the Way You Live."
+
+Supporting paragraph:
+
+"Discover beautifully crafted furniture and considered interiors that bring warmth, character, and lasting comfort to every space."
+
+Primary CTA: "Explore Collections"
+
+Secondary CTA: "Our Philosophy"
+
+Primary button:
+
+- Dark charcoal background.
+- White text.
+- Rounded pill or subtly rounded rectangle.
+- Small directional arrow.
+- Elegant hover transition.
+
+Secondary button:
+
+- Transparent background.
+- Minimal play or circular arrow icon.
+- Light text when placed over the image.
+
+Add an understated slide indicator near the bottom.
+
+Optional:
+
+- Three slide indicators.
+- Small decorative horizontal progress line.
+- Short editorial tagline aligned to the lower-right corner.
+
+If building a carousel, make all slides functional and ensure transitions are smooth.
+
+Mobile:
+
+- Use a carefully selected image crop.
+- Adjust text position.
+- Preserve contrast.
+- Stack CTA buttons when necessary.
+- Keep the hero visually impactful without excessive height.
+
+---
+
+## 7\. INTRODUCTION / BRAND PHILOSOPHY SECTION
+
+Create a two-column editorial section directly below the hero.
+
+DESKTOP LAYOUT:
+
+Left column:
+
+- Small uppercase eyebrow: "A MORE CONSIDERED HOME"
+- Large serif heading:
+
+"Designed for Living. Created to Last."
+
+- Supporting paragraph:
+
+"We believe the spaces around us shape the way we feel. Our thoughtfully selected furniture and interior solutions combine comfort, craftsmanship, and timeless design to make everyday living more meaningful."
+
+- Text link: "Discover Our Approach →"
+
+Right column:
+
+- One large horizontal architectural dining-room image.
+- Two smaller stacked editorial feature cards.
+
+FEATURE CARD ONE:
+
+Title: "Crafted with Purpose"
+
+Description: "Natural materials. Exceptional details. Lasting quality."
+
+Feature image: Close-up of rich walnut wood furniture and refined material details.
+
+FEATURE CARD TWO:
+
+Title: "Made for Real Life"
+
+Description: "Beautiful spaces designed around everyday comfort."
+
+Feature image: Close-up of premium upholstery and soft neutral textures.
+
+Use subtle borders, clean spacing, and sophisticated imagery.
+
+Do not use excessive card shadows.
+
+On mobile, stack all elements vertically.
+
+---
+
+## 8\. TRUST AND BRAND STATISTICS STRIP
+
+Create a horizontal trust indicator section with a warm beige background.
+
+Display four statistics:
+
+- 10K+ — Homes Inspired.
+- 25+ — Countries Reached.
+- 98% — Customer Satisfaction.
+- 12+ — Years of Craftsmanship.
+
+Each statistic should contain:
+
+- Minimal line icon.
+- Large elegant numerical value.
+- Small supporting label.
+
+Design:
+
+- Single horizontal row on desktop.
+- Equal-width columns.
+- Thin vertical separators.
+- Generous padding.
+- Subtle rounded outer container.
+
+Mobile:
+
+- Two-column grid.
+- Consistent alignment.
+- Comfortable spacing.
+
+Use these figures as illustrative brand content, not independently verified business claims. Keep the statistics editable.
+
+---
+
+## 9\. EXPLORE BY SPACE — CATEGORY SECTION
+
+Create a premium category discovery section.
+
+Section eyebrow:
+
+"EXPLORE BY SPACE"
+
+Main heading:
+
+"Find Your Perfect Space"
+
+Supporting description:
+
+"From cozy corners to open living, discover thoughtfully selected furniture and design solutions for every room in your home."
+
+Add a small right-aligned link:
+
+"View All Spaces →"
+
+CATEGORY GRID:
+
+Create four large image cards.
+
+CARD 1 — LIVING ROOM
+
+Image: Beautiful neutral living room with a sculptural sectional sofa, natural daylight, wooden accents, and refined styling.
+
+Title: "Living Room"
+
+Subtitle: "Relaxed. Refined. Yours."
+
+CARD 2 — DINING ROOM
+
+Image: Elegant walnut dining table, upholstered chairs, pendant lighting, and a sophisticated dining interior.
+
+Title: "Dining Room"
+
+Subtitle: "Gather in Style."
+
+CARD 3 — BEDROOM
+
+Image: Calm luxury bedroom with a low upholstered bed, warm neutral linens, natural textures, and soft lighting.
+
+Title: "Bedroom"
+
+Subtitle: "Rest Beautifully."
+
+CARD 4 — HOME OFFICE
+
+Image: Contemporary home office featuring a refined wooden desk, comfortable chair, shelving, and natural daylight.
+
+Title: "Home Office"
+
+Subtitle: "Work Inspired."
+
+CARD DESIGN:
+
+- Large rectangular image.
+- Aspect ratio around 1.2–1.4.
+- Image fills the upper portion.
+- Warm ivory information area below.
+- Category title in serif typography.
+- Supporting text in small sans-serif typography.
+- Small circular arrow button aligned right.
+
+Hover:
+
+- Slight image zoom.
+- Subtle arrow movement.
+- Gentle background transition.
+- Smooth 300–500ms animation.
+
+Each card must navigate to a relevant collection or category page.
+
+---
+
+## 10\. OUR STORY — EDITORIAL BRAND SECTION
+
+Create a visually striking two-column story section.
+
+LEFT: A large architectural interior photograph showing a beautifully designed living room with:
+
+- Natural walnut shelving.
+- Premium upholstered sofa.
+- Soft beige walls.
+- Natural stone or wood surfaces.
+- Large windows.
+- Greenery and natural daylight.
+
+RIGHT: A clean warm ivory text area.
+
+Small label: "OUR STORY"
+
+Main heading: "Thoughtful Spaces. Meaningful Living."
+
+Supporting heading: "More Than Furniture. A Way of Living."
+
+Body:
+
+"We believe great design should feel as good as it looks. Our approach brings together timeless forms, considered materials, and thoughtful craftsmanship to create spaces that inspire everyday living.
+
+From the first design idea to the finishing details, we celebrate the beauty of simplicity and the character of natural materials."
+
+CTA: "Discover Our Story →"
+
+Add a small vertical list of brand values on the right or beside the text:
+
+- People.
+- Materials.
+- Sustainability.
+- Craftsmanship.
+
+The image should occupy approximately 50% of the desktop layout.
+
+Use a balanced composition with generous whitespace.
+
+---
+
+## 11\. FEATURED PRODUCTS — PREMIUM SHOPPING EXPERIENCE
+
+Create an elegant product collection section.
+
+Section title:
+
+"Curated for Inspired Living"
+
+Supporting text:
+
+"A considered selection of furniture and home accents, chosen for their beauty, function, and enduring appeal."
+
+Add a "Shop All Products →" link.
+
+PRODUCT GRID:
+
+Display six premium products.
+
+Use original product names and realistic descriptions.
+
+PRODUCT 1: Name: The Solenne Sofa Category: Living Room Price: $2,800 Image: Cream-colored contemporary sectional sofa in a minimalist living room.
+
+PRODUCT 2: Name: The Forme Dining Table Category: Dining Price: $1,950 Image: Sculptural solid walnut dining table with architectural detailing.
+
+PRODUCT 3: Name: The Terra Lounge Chair Category: Seating Price: $1,420 Image: Warm caramel leather or textured fabric lounge chair.
+
+PRODUCT 4: Name: The Aurelle Bed Category: Bedroom Price: $2,600 Image: Elegant upholstered king-size bed with neutral bedding.
+
+PRODUCT 5: Name: The Noma Sideboard Category: Storage Price: $1,780 Image: Contemporary walnut sideboard with minimalist detailing.
+
+PRODUCT 6: Name: The Halo Floor Lamp Category: Lighting Price: $480 Image: Sculptural floor lamp with a refined metal finish.
+
+All prices are illustrative and must be editable.
+
+PRODUCT CARD DESIGN:
+
+- Image-first presentation.
+- Consistent image aspect ratios.
+- Warm neutral image backgrounds.
+- Product title in elegant serif.
+- Price in small clean sans-serif.
+- Small circular arrow or add-to-bag control.
+- Optional wishlist heart icon.
+- Optional product category label.
+
+Interactions:
+
+- Image zoom on hover.
+- Quick-view product modal.
+- Add-to-cart functionality.
+- Wishlist toggle.
+- Product detail navigation.
+- Cart item count updates immediately.
+- Toast confirmation after adding products.
+
+Use consistent photography and lighting across the product collection.
+
+IMPORTANT: Never use empty image containers or generic colored placeholders.
+
+Generate individual high-quality product images or source suitable real product photographs.
+
+---
+
+## 12\. ADDITIONAL HIGH-CONVERSION SECTIONS
+
+Build the following sections to make the website feel complete and commercially viable.
+
+### A. DESIGN CONSULTATION BANNER
+
+Create a premium full-width promotional section with an elegant interior background image.
+
+Heading:
+
+"Your Space, Thoughtfully Considered."
+
+Description:
+
+"Work with our design team to bring your vision to life with carefully considered furniture and interior solutions."
+
+CTA:
+
+"Book Your Consultation"
+
+The CTA should open a functional consultation form.
+
+Form fields:
+
+- Full name.
+- Email address.
+- Phone number.
+- Preferred consultation type.
+- Room or project type.
+- Additional message.
+
+Include validation and a clear success state.
+
+### B. JOURNAL / INSPIRATION SECTION
+
+Section title:
+
+"Stories for Inspired Living"
+
+Show three editorial article cards.
+
+Example articles:
+
+1. "The Art of Creating a Calm Living Space"
+2. "A Guide to Choosing Timeless Furniture"
+3. "The Beauty of Natural Materials"
+
+Each card should include:
+
+- Premium editorial image.
+- Small category label.
+- Article title.
+- Short description.
+- Reading time.
+- "Read Story →" link.
+
+Use realistic editorial imagery.
+
+### C. NEWSLETTER SECTION
+
+Create a refined newsletter subscription area.
+
+Heading:
+
+"A Little Inspiration, Delivered."
+
+Description:
+
+"Join our community for new collections, design inspiration, and thoughtful ideas for your home."
+
+Include:
+
+- Email input.
+- Subscribe button.
+- Basic email validation.
+- Success confirmation.
+
+Use a minimal, elegant layout.
+
+---
+
+## 13\. FOOTER DESIGN
+
+Create a premium dark footer.
+
+Background: Deep charcoal or near-black.
+
+Text: Warm ivory and muted beige.
+
+LAYOUT:
+
+FOUR COLUMNS.
+
+COLUMN 1 — BRAND
+
+Original brand logo.
+
+Short description:
+
+"Thoughtfully designed furniture and considered interiors for a more meaningful way of living."
+
+Social icons:
+
+- Instagram.
+- Pinterest.
+- Facebook.
+- YouTube.
+
+COLUMN 2 — EXPLORE
+
+- Living Room.
+- Dining Room.
+- Bedroom.
+- Home Office.
+- All Products.
+
+COLUMN 3 — ABOUT
+
+- Our Story.
+- Our Philosophy.
+- Craftsmanship.
+- Sustainability.
+- Journal.
+- Careers.
+
+COLUMN 4 — SUPPORT
+
+- Contact Us.
+- Shipping & Delivery.
+- Returns.
+- FAQs.
+- Privacy Policy.
+- Terms of Service.
+
+NEWSLETTER: Include a compact newsletter subscription field.
+
+BOTTOM FOOTER:
+
+- Copyright notice with current year.
+- Privacy Policy.
+- Terms of Service.
+- Cookie Preferences.
+
+Design details:
+
+- Thin muted horizontal divider.
+- Small refined typography.
+- Proper spacing.
+- Elegant hover states.
+- Responsive stacked columns on mobile.
+
+Do not use the reference brand name or identity.
+
+---
+
+## 14\. IMAGE GENERATION AND PHOTOGRAPHY REQUIREMENTS
+
+This website depends heavily on photography.
+
+Use automatically generated images wherever the image-generation capabilities of the environment allow.
+
+If direct generation is unavailable, use reliable, accessible image URLs from suitable royalty-free image sources.
+
+Never leave blank image areas.
+
+Do not use:
+
+- Gray placeholder rectangles.
+- Random unrelated stock photos.
+- Broken external URLs.
+- Repeated images for unrelated products.
+- Low-resolution images.
+- Cartoon graphics.
+- Obvious AI-generated furniture distortions.
+
+Generate or source separate images for:
+
+1. Main hero living room.
+2. Dining room introduction.
+3. Walnut material detail.
+4. Upholstery detail.
+5. Living room category.
+6. Dining room category.
+7. Bedroom category.
+8. Home office category.
+9. Our story interior.
+10. Six individual product images.
+11. Consultation banner.
+12. Three journal articles.
+
+IMAGE ART DIRECTION:
+
+All images must have:
+
+- Professional interior photography quality.
+- Natural daylight.
+- Warm cinematic lighting.
+- Neutral beige and brown color grading.
+- Architectural composition.
+- High material detail.
+- Realistic proportions.
+- Premium furniture styling.
+- Sophisticated editorial framing.
+
+Maintain a consistent photography style across the website.
+
+Image optimization:
+
+- Use WebP or AVIF when possible.
+- Lazy-load below-the-fold images.
+- Prioritize hero image loading.
+- Specify image dimensions or aspect ratios.
+- Add meaningful alt text.
+- Avoid layout shifts.
+
+---
+
+## 15\. ANIMATIONS AND MICRO-INTERACTIONS
+
+Use subtle, premium motion design.
+
+The website should feel responsive and alive without becoming distracting.
+
+Implement:
+
+1. Smooth page scrolling.
+2. Gentle fade-in animations on section entry.
+3. Subtle upward motion for content reveals.
+4. Image zoom on card hover.
+5. Animated navigation underlines.
+6. Smooth button hover transitions.
+7. Shopping bag drawer slide-in animation.
+8. Mobile navigation transitions.
+9. Quick-view modal animation.
+10. Newsletter success feedback.
+11. Consultation form transitions.
+12. Small directional arrow animations.
+
+Animation specifications:
+
+- Typical duration: 250–600ms.
+- Use natural easing.
+- Avoid excessive bouncing.
+- Avoid constant movement.
+- Respect prefers-reduced-motion.
+- Prevent scroll-triggered animation from hiding important content.
+
+Do not sacrifice performance for animation.
+
+---
+
+## 16\. RESPONSIVE DESIGN — CRITICAL REQUIREMENT
+
+The website must be completely responsive across all common screen sizes.
+
+DESKTOP: 1440px and above.
+
+- Full horizontal navigation.
+- Multi-column editorial sections.
+- Four-column category grid.
+- Six-column or six-item responsive product layout.
+- Large immersive hero.
+- Spacious margins.
+- Balanced image-to-text proportions.
+
+LAPTOP: 1024px–1439px.
+
+- Slightly reduced margins.
+- Maintain editorial composition.
+- Adjust grid widths.
+- Preserve readable typography.
+- Prevent navigation overflow.
+
+TABLET: 768px–1023px.
+
+- Adapt navigation.
+- Use two-column content sections where appropriate.
+- Category cards in a two-column grid.
+- Product grid in two or three columns.
+- Reduce hero text size.
+- Keep CTA buttons accessible.
+
+MOBILE: 320px–767px.
+
+- Compact header.
+- Functional mobile navigation.
+- Hero text aligned for readability.
+- Single-column introduction layout.
+- Two-column statistics where appropriate.
+- Two-column category grid when space allows.
+- Product grid in two columns where practical, switching to one column on very narrow screens if necessary.
+- Stacked editorial sections.
+- Full-width CTA buttons where useful.
+- Mobile-friendly form inputs.
+- No horizontal overflow.
+- Comfortable touch targets.
+- Consistent section spacing.
+
+Test the visual composition at:
+
+- 320px.
+- 375px.
+- 390px.
+- 430px.
+- 768px.
+- 1024px.
+- 1280px.
+- 1440px.
+- 1920px.
+
+No text clipping, overlapping elements, broken navigation, distorted images, or horizontal scrolling.
+
+---
+
+## 17\. FUNCTIONALITY REQUIREMENTS
+
+The finished website must not be merely a visual mockup.
+
+Implement the following working features:
+
+### Navigation
+
+- All navigation links work.
+- Smooth scrolling where appropriate.
+- Mobile menu opens and closes.
+- Sticky header works.
+
+### Search
+
+- Search interface opens.
+- Search input accepts text.
+- Search can filter available products or collections.
+
+### Shopping Bag
+
+- Add-to-cart works.
+- Cart count updates.
+- Cart drawer opens.
+- Product quantity can increase or decrease.
+- Items can be removed.
+- Subtotal calculates correctly.
+- Empty-cart state is designed.
+- Cart data persists locally where appropriate.
+
+### Product Interactions
+
+- Product cards are clickable.
+- Wishlist buttons work.
+- Quick-view modal works.
+- Add-to-cart confirmation appears.
+
+### Forms
+
+- Consultation form has validation.
+- Newsletter form has validation.
+- Clear submission feedback is shown.
+- Do not falsely claim that a form was delivered to a business email without a configured backend.
+
+### Additional Features
+
+- Back-to-top control.
+- Smooth anchor navigation.
+- Accessible focus states.
+- Custom 404 page if routing is implemented.
+- Cookie preference interface if appropriate.
+
+If backend services are unavailable, build the client-side experience so that the appropriate integrations can be added later.
+
+---
+
+## 18\. SEO AND PERFORMANCE OPTIMIZATION
+
+Implement:
+
+- Unique page title.
+- Meta description.
+- Open Graph metadata.
+- Semantic HTML structure.
+- Proper H1/H2/H3 hierarchy.
+- Descriptive image alt attributes.
+- Descriptive URL slugs if multiple pages exist.
+- Favicon using the original brand identity.
+- Sitemap and robots.txt where appropriate.
+- Product structured data where accurate.
+- Organization structured data where accurate.
+
+Performance:
+
+- Minimize unnecessary JavaScript.
+- Use optimized image formats.
+- Lazy-load noncritical images.
+- Preload or prioritize the hero image.
+- Avoid layout shifts.
+- Use efficient CSS.
+- Avoid unnecessary animation libraries.
+- Ensure good Lighthouse performance.
+
+Target:
+
+- Fast loading.
+- Responsive interactions.
+- Strong accessibility.
+- Excellent mobile usability.
+- SEO-friendly structure.
+
+---
+
+## 19\. HOSTINGER DEPLOYMENT COMPATIBILITY
+
+Build the project so it can be deployed to Hostinger.
+
+Requirements:
+
+- Use Vite production build.
+- Configure the correct build command.
+- Ensure the production output directory is `dist`.
+- Use relative-safe asset paths.
+- Configure routing fallback if client-side routing is used.
+- Avoid dependencies on development-only services.
+- Avoid hardcoded localhost URLs.
+- Ensure all assets are included or publicly accessible.
+- Include a complete README.
+
+Provide:
+
+**Development command:** `npm run dev`
+
+**Production build command:** `npm run build`
+
+**Production output:** `dist`
+
+The project must be suitable for Hostinger static website hosting or compatible Node.js hosting.
+
+Do not rely on features that only work inside Google AI Studio.
+
+---
+
+## 20\. FINAL QUALITY CONTROL
+
+Before considering the website complete, perform a full design and functionality review.
+
+VISUAL CHECKLIST:
+
+- Does the website look premium?
+- Is the overall aesthetic consistent?
+- Are the photographs high quality?
+- Is the typography refined?
+- Are the section margins consistent?
+- Is the hero visually impressive?
+- Are product cards aligned?
+- Does the footer feel complete?
+- Are the colors harmonious?
+- Is the design visually balanced?
+
+FUNCTIONAL CHECKLIST:
+
+- Do all navigation items work?
+- Does the mobile menu work?
+- Does search work?
+- Does the shopping bag work?
+- Do product interactions work?
+- Do the forms validate?
+- Are all CTA buttons functional?
+- Are there any broken links?
+- Are there any console errors?
+
+RESPONSIVE CHECKLIST:
+
+- Does the website work at 320px?
+- Does it work on modern smartphones?
+- Does it work on tablets?
+- Does it work on laptops?
+- Does it look excellent on large monitors?
+- Is there any horizontal overflow?
+- Are all text elements readable?
+- Are all touch targets comfortable?
+
+Do not stop after creating the first visible screen. Complete the entire website from the top navigation through the final footer.
+
+---
+
+## 21\. FINAL DESIGN STANDARD
+
+The final result must look like a professionally commissioned luxury furniture and interior design website.
+
+The design should combine:
+
+- The visual richness of premium interior photography.
+- The editorial elegance of an architecture magazine.
+- The usability of a modern e-commerce store.
+- The simplicity of luxury minimalist branding.
+- The conversion-focused structure of a professional business website.
+
+Prioritize visual quality, spacing, typography, photography, responsive behavior, and functionality equally.
+
+Use beautiful real-looking imagery, original copywriting, realistic product data, consistent design tokens, and polished interactive details.
+
+**MOST IMPORTANT INSTRUCTION:**
+
+Do not deliver a basic template, a wireframe, a partial homepage, or a generic furniture website.
+
+Build the complete, original, polished, production-ready experience.
+
+Make every section visually intentional. Make every image relevant. Make every button functional. Make every screen responsive.
+
+The final website should be impressive enough to present directly to a real luxury furniture or interior design client and should be ready for production deployment on Hostinger after any required business-specific configuration.
+
+Now begin building the complete website. Prioritize implementation over explanations, and generate all necessary project files and code.

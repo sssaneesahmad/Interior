@@ -1,0 +1,6 @@
+{
+  "name": "Atelier Sorel",
+  "description": "Considered luxury furniture and architectural interiors crafted from solid walnut, travertine, and natural linen.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

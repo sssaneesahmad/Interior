@@ -1,11 +1,27 @@
-<div align="center">
+# Atelier Sorel — Luxury Furniture & Architectural Interiors
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Production-ready React, TypeScript, Vite, and Tailwind CSS storefront for **Atelier Sorel**, designed for static deployment on Hostinger or any modern static web host.
 
-  <h1>Built with AI Studio</h2>
+## Tech Stack
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- **React 19** & **TypeScript**
+- **Vite 8** (static production bundle to `dist/`)
+- **Tailwind CSS v4**
+- **Lucide React** icons
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Commands
 
-</div>
+- **Development server:** `npm run dev`
+- **Type check:** `npm run lint`
+- **Production build:** `npm run build`
+- **Preview production build:** `npm run preview`
+
+## Deploying to Hostinger
+
+1. Run `npm install` followed by `npm run build`.
+2. Upload the entire contents of the generated `dist/` directory into your Hostinger domain's `public_html/` folder via File Manager, FTP, or Git deployment.
+3. The included `public/.htaccess` file is automatically copied to `dist/.htaccess` to handle SPA routing fallbacks and long-lived static asset caching on Hostinger's Apache/LiteSpeed servers.
+
+## Integrating Live Form & Checkout Endpoints
+
+Client-side validation, persistent local shopping bag (`localStorage`), saved wishlist, and order/consultation reference generation are separated cleanly inside `src/components/`. Connect your preferred form endpoint, headless commerce API, or payment gateway inside `CartDrawer.tsx`, `ConsultationModal.tsx`, and `NewsletterSection.tsx`.
