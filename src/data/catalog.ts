@@ -14,6 +14,8 @@ export const BRAND = {
   showrooms: 'Zurich · Copenhagen · Milan',
 } as const;
 
+export const WHITE_GLOVE_THRESHOLD = 2500;
+
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 'living-sanctuary',
@@ -124,132 +126,264 @@ export const PRODUCTS: Product[] = [
   {
     id: 'solenne-sofa',
     slug: 'the-solenne-sofa',
+    sku: 'AS-LR-101',
     name: 'The Solenne Sofa',
     category: 'Living Room',
     space: 'living-room',
     price: 2800,
+    availability: 'Made to Order',
     image: ASSETS.productSolenneSofa,
     alt: 'The Solenne Sofa upholstered in cream textured boucle with wide chaise lounge in a warm plaster room',
+    gallery: [
+      {
+        src: ASSETS.productSolenneSofa,
+        alt: 'The Solenne Sofa front studio composition in cream boucle',
+        caption: 'Studio Profile · Chalk Bouclé',
+      },
+      {
+        src: ASSETS.heroLivingRoom,
+        alt: 'Sculptural cream boucle seating in sunlit architectural living room',
+        caption: 'In Residence · Sunlit Living Room',
+      },
+      {
+        src: ASSETS.detailLinenUpholstery,
+        alt: 'Close-up of heavyweight cream boucle and Belgian linen weave',
+        caption: 'Material Detail · Belgian Bouclé & Linen',
+      },
+    ],
     shortDescription:
       'Deep modular chaise sectional upholstered in Belgian boucle with feather-wrapped cushions.',
     description:
       'Sculpted with generous proportions and gentle radiused arms, The Solenne Sofa anchors open living spaces with effortless poise. Built on a kiln-dried European beech frame with down-wrapped high-resilience cushions and removable Belgian textile covers.',
     dimensions: 'W 295 cm × D 168 cm × H 74 cm · Seat H 41 cm',
     materials: 'Kiln-dried beech frame, heavyweight Belgian boucle, natural feather-down fill',
+    careInstructions:
+      'Vacuum gently with a soft brush attachment weekly. Removable cushion covers may be professionally dry-cleaned.',
     leadTime: '3–4 weeks white-glove delivery',
     finishes: [
       { name: 'Chalk Bouclé', swatchHex: '#EFECE6' },
       { name: 'Oatmeal Linen', swatchHex: '#D8CFC2' },
       { name: 'Warm Taupe', swatchHex: '#A39483' },
     ],
+    pairedProductIds: ['terra-lounge-chair', 'halo-floor-lamp', 'noma-sideboard'],
   },
   {
     id: 'forme-dining-table',
     slug: 'the-forme-dining-table',
+    sku: 'AS-DN-204',
     name: 'The Forme Dining Table',
     category: 'Dining',
     space: 'dining-room',
     price: 1950,
+    availability: 'Made to Order',
     image: ASSETS.productFormeTable,
     alt: 'The Forme Dining Table in solid oiled American walnut with curved architectural pedestal legs',
+    gallery: [
+      {
+        src: ASSETS.productFormeTable,
+        alt: 'The Forme Dining Table in solid American walnut with twin fluted pedestals',
+        caption: 'Studio Profile · Oiled American Walnut',
+      },
+      {
+        src: ASSETS.heroDiningSanctuary,
+        alt: 'Solid walnut dining table styled in sunlit European dining room',
+        caption: 'In Residence · Architectural Dining',
+      },
+      {
+        src: ASSETS.detailWalnutCraft,
+        alt: 'Macro view of beveled solid walnut grain and architectural joinery',
+        caption: 'Craft Detail · Hand-Rubbed Walnut',
+      },
+    ],
     shortDescription:
       'Architectural solid walnut dining table resting on twin sculpted timber pedestals.',
     description:
       'Milled from sustainably harvested solid American walnut, The Forme Dining Table pairs a chamfered plank top with a continuous U-shaped fluted pedestal base. Hand-rubbed with plant-based matte oil to preserve natural grain warmth.',
     dimensions: 'L 240 cm × W 105 cm × H 75 cm · Seats 8–10',
     materials: 'FSC-certified solid American walnut, plant-based matte oil finish',
+    careInstructions:
+      'Wipe daily with a lightly dampened cotton cloth following the wood grain. Re-oil annually with plant-based timber wax.',
     leadTime: '2–3 weeks white-glove delivery',
     finishes: [
       { name: 'Oiled Walnut', swatchHex: '#574638' },
       { name: 'Smoked Oak', swatchHex: '#6E5A49' },
       { name: 'Natural Ash', swatchHex: '#C9B8A5' },
     ],
+    pairedProductIds: ['noma-sideboard', 'terra-lounge-chair', 'halo-floor-lamp'],
   },
   {
     id: 'terra-lounge-chair',
     slug: 'the-terra-lounge-chair',
+    sku: 'AS-ST-112',
     name: 'The Terra Lounge Chair',
     category: 'Seating',
     space: 'living-room',
     price: 1420,
+    availability: 'In Stock',
     image: ASSETS.productTerraChair,
     alt: 'The Terra Lounge Chair in cognac vegetable-tanned saddle leather and sculpted solid walnut frame',
+    gallery: [
+      {
+        src: ASSETS.productTerraChair,
+        alt: 'The Terra Lounge Chair in Caramel Saddle leather and solid walnut',
+        caption: 'Studio Profile · Caramel Saddle Leather',
+      },
+      {
+        src: ASSETS.storyAtelierInterior,
+        alt: 'Warm residential reading room featuring natural walnut and neutral seating',
+        caption: 'In Residence · Library & Lounge',
+      },
+      {
+        src: ASSETS.journalNaturalMaterials,
+        alt: 'Overhead material palette showing cognac saddle leather and oiled walnut',
+        caption: 'Material Swatches · Hide & Walnut',
+      },
+    ],
     shortDescription:
       'Hand-shaped walnut armchair cushioned in supple vegetable-tanned saddle leather.',
     description:
       'Inspired by mid-century European joinery, The Terra Lounge Chair wraps a gently reclined solid walnut frame around deep cushions clad in full-grain Tuscan saddle leather that develops a rich patina over decades of use.',
     dimensions: 'W 74 cm × D 82 cm × H 79 cm · Seat H 40 cm',
     materials: 'Solid walnut frame, full-grain vegetable-tanned leather, mortise-and-tenon joinery',
+    careInstructions:
+      'Dust leather with a dry microfiber cloth and condition twice yearly with natural beeswax leather balm.',
     leadTime: 'In stock · Ships within 5 business days',
     finishes: [
       { name: 'Caramel Saddle', swatchHex: '#9C6239' },
       { name: 'Espresso Hide', swatchHex: '#433329' },
       { name: 'Sandstone Linen', swatchHex: '#D5C7B6' },
     ],
+    pairedProductIds: ['solenne-sofa', 'halo-floor-lamp', 'forme-dining-table'],
   },
   {
     id: 'aurelle-bed',
     slug: 'the-aurelle-bed',
+    sku: 'AS-BD-301',
     name: 'The Aurelle Bed',
     category: 'Bedroom',
     space: 'bedroom',
     price: 2600,
+    availability: 'Made to Order',
     image: ASSETS.productAurelleBed,
     alt: 'The Aurelle Bed king-size platform frame in warm oatmeal Belgian linen with channel-tufted headboard',
+    gallery: [
+      {
+        src: ASSETS.productAurelleBed,
+        alt: 'The Aurelle Bed upholstered in oatmeal Belgian flax linen',
+        caption: 'Studio Profile · Oatmeal Flax',
+      },
+      {
+        src: ASSETS.spaceBedroom,
+        alt: 'Minimalist serene bedroom styled with linen upholstery and walnut shelving',
+        caption: 'In Residence · Master Sanctuary',
+      },
+      {
+        src: ASSETS.detailLinenUpholstery,
+        alt: 'Tactile close-up of unbleached Belgian linen upholstery weave',
+        caption: 'Material Detail · Stonewashed Linen',
+      },
+    ],
     shortDescription:
       'Channel-padded king platform bed tailored in breathable unbleached Belgian flax.',
     description:
       'Conceived as an acoustic and visual sanctuary, The Aurelle Bed features a horizontally channeled headboard and softly mitered plinth wrapped in stonewashed Belgian linen, supported by silent solid oak slats.',
     dimensions: 'King: W 208 cm × L 224 cm × H 108 cm',
     materials: 'Stonewashed Belgian linen, solid white oak slat system, natural wool batting',
+    careInstructions:
+      'Spot clean linen with lukewarm water and mild neutral soap; avoid harsh optical brighteners.',
     leadTime: '3–4 weeks white-glove delivery',
     finishes: [
       { name: 'Oatmeal Flax', swatchHex: '#D8CEBE' },
       { name: 'Warm Ivory', swatchHex: '#EFEAE1' },
       { name: 'Slate Taupe', swatchHex: '#8E8479' },
     ],
+    pairedProductIds: ['halo-floor-lamp', 'noma-sideboard', 'terra-lounge-chair'],
   },
   {
     id: 'noma-sideboard',
     slug: 'the-noma-sideboard',
+    sku: 'AS-ST-408',
     name: 'The Noma Sideboard',
     category: 'Storage',
     space: 'home-office',
     price: 1780,
+    availability: 'Made to Order',
     image: ASSETS.productNomaSideboard,
     alt: 'The Noma Sideboard in fluted dark walnut on slender blackened bronze legs against a warm plaster wall',
+    gallery: [
+      {
+        src: ASSETS.productNomaSideboard,
+        alt: 'The Noma Sideboard in fluted solid walnut with blackened bronze legs',
+        caption: 'Studio Profile · Fluted Walnut',
+      },
+      {
+        src: ASSETS.spaceHomeOffice,
+        alt: 'Architectural home office featuring solid walnut joinery and bookshelves',
+        caption: 'In Residence · Study & Storage',
+      },
+      {
+        src: ASSETS.detailWalnutCraft,
+        alt: 'Close-up of solid American walnut dovetail drawer and mitered edge',
+        caption: 'Craft Detail · Dovetail Joinery',
+      },
+    ],
     shortDescription:
       'Low-profile fluted walnut credenza poised on slender blackened bronze legs.',
     description:
       'A study in architectural restraint, The Noma Sideboard conceals adjustable solid wood shelving and soft-close cable routing behind precision-milled fluted walnut doors—equally suited to dining rooms, living spaces, and executive studies.',
     dimensions: 'W 190 cm × D 46 cm × H 72 cm',
     materials: 'Solid walnut & quarter-sawn veneer, blackened bronze base, soft-close brass hinges',
+    careInstructions:
+      'Dust fluted channels with a natural bristle brush; keep away from direct radiator heat.',
     leadTime: '2 weeks white-glove delivery',
     finishes: [
       { name: 'Fluted Walnut', swatchHex: '#574638' },
       { name: 'Charred Oak', swatchHex: '#292521' },
     ],
+    pairedProductIds: ['forme-dining-table', 'halo-floor-lamp', 'terra-lounge-chair'],
   },
   {
     id: 'halo-floor-lamp',
     slug: 'the-halo-floor-lamp',
+    sku: 'AS-LT-502',
     name: 'The Halo Floor Lamp',
     category: 'Lighting',
     space: 'living-room',
     price: 480,
+    availability: 'In Stock',
     image: ASSETS.productHaloLamp,
     alt: 'The Halo Floor Lamp with hand-carved raw travertine base, aged brass stem, and warm linen drum shade',
+    gallery: [
+      {
+        src: ASSETS.productHaloLamp,
+        alt: 'The Halo Floor Lamp with Roman travertine plinth and aged brass stem',
+        caption: 'Studio Profile · Aged Brass & Travertine',
+      },
+      {
+        src: ASSETS.spaceLivingRoom,
+        alt: 'Warm ambient lighting beside minimalist modular living room seating',
+        caption: 'In Residence · Ambient Corner',
+      },
+      {
+        src: ASSETS.journalNaturalMaterials,
+        alt: 'Honed Roman travertine, brushed bronze hardware, and unbleached linen',
+        caption: 'Material Detail · Travertine & Brass',
+      },
+    ],
     shortDescription:
       'Hand-turned aged brass floor lamp anchored by a raw honed Roman travertine plinth.',
     description:
       'Balancing mineral weight with slender proportion, The Halo Floor Lamp rises from a hand-chiseled Roman travertine cylinder along a brushed brass stem to diffuse warm, glare-free illumination through an unbleached linen shade.',
     dimensions: 'Ø 42 cm × H 158 cm · Warm 2700K dimmable LED included',
     materials: 'Solid Roman travertine, brushed unlacquered brass, woven linen shade',
+    careInstructions:
+      'Dust travertine and linen shade with a dry soft cloth. Unlacquered brass naturally patinates with age.',
     leadTime: 'In stock · Ships within 3 business days',
     finishes: [
       { name: 'Aged Brass & Travertine', swatchHex: '#B69D74' },
       { name: 'Bronze & Limestone', swatchHex: '#5D534A' },
     ],
+    pairedProductIds: ['solenne-sofa', 'terra-lounge-chair', 'aurelle-bed'],
   },
 ];
 

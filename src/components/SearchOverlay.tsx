@@ -7,9 +7,10 @@ import { ImageWithFallback } from './ImageWithFallback';
 interface SearchOverlayProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectProduct: (product: Product) => void;
+  onSelectProduct: (slug: string) => void;
   onSelectSpace: (category: ProductCategory) => void;
   onSelectArticle: (article: JournalArticle) => void;
+  onViewAllShop: () => void;
 }
 
 export function SearchOverlay({
@@ -18,6 +19,7 @@ export function SearchOverlay({
   onSelectProduct,
   onSelectSpace,
   onSelectArticle,
+  onViewAllShop,
 }: SearchOverlayProps) {
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -121,9 +123,22 @@ export function SearchOverlay({
           <div className="mt-6 space-y-8">
             {/* Products */}
             <div>
-              <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#625B54] mb-4">
-                {normalized ? 'Matching Pieces' : 'Signature Pieces'}
-              </p>
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#625B54]">
+                  {normalized ? 'Matching Pieces' : 'Signature Pieces'}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onViewAllShop();
+                  }}
+                  className="inline-flex items-center gap-1.5 text-[12px] font-medium text-[#574638] hover:text-[#171614] cursor-pointer"
+                >
+                  <span>Browse Full Shop</span>
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </button>
+              </div>
 
               {matchingProducts.length === 0 ? (
                 <p className="text-[14px] text-[#625B54]">
@@ -137,7 +152,7 @@ export function SearchOverlay({
                       type="button"
                       onClick={() => {
                         onClose();
-                        onSelectProduct(product);
+                        onSelectProduct(product.slug);
                       }}
                       className="group text-left bg-[#F1EBE3] border border-[#E6DDD1] hover:border-[#C9B8A5] p-3 flex sm:flex-col gap-3.5 transition-colors cursor-pointer"
                     >

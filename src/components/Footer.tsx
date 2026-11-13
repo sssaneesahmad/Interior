@@ -4,13 +4,17 @@ import { BRAND } from '../data/catalog';
 import type { InfoModalTopic, ProductCategory } from '../types';
 
 interface FooterProps {
-  onSelectCategory: (category: ProductCategory) => void;
+  onNavigateHome: () => void;
+  onNavigateShop: (category: ProductCategory) => void;
+  onNavigateJournal: () => void;
   onOpenInfo: (topic: InfoModalTopic) => void;
   onOpenConsultation: () => void;
 }
 
 export function Footer({
-  onSelectCategory,
+  onNavigateHome,
+  onNavigateShop,
+  onNavigateJournal,
   onOpenInfo,
   onOpenConsultation,
 }: FooterProps) {
@@ -29,12 +33,6 @@ export function Footer({
     setFooterMsg({ type: 'success', text: 'Subscribed locally.' });
   };
 
-  const handleExploreClick = (category: ProductCategory) => {
-    onSelectCategory(category);
-    const el = document.querySelector('#featured-products');
-    el?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer id="footer" className="bg-[#171614] text-[#F7F3ED] pt-16 sm:pt-20 pb-10">
       <div className="max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
@@ -42,7 +40,11 @@ export function Footer({
           {/* Column 1 — Brand */}
           <div className="lg:col-span-4 pr-0 lg:pr-8">
             <a
-              href="#top"
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigateHome();
+              }}
               className="font-editorial text-[28px] tracking-[0.02em] text-[#F7F3ED] inline-block mb-4"
             >
               {BRAND.name}
@@ -77,7 +79,6 @@ export function Footer({
                 aria-label="Atelier Sorel on Pinterest"
                 className="w-10 h-10 rounded-full border border-[#F7F3ED]/20 inline-flex items-center justify-center text-[#E6DDD1] hover:bg-[#F7F3ED] hover:text-[#171614] transition-colors"
               >
-                {/* Clean geometric P emblem for Pinterest */}
                 <span className="font-editorial text-[15px] italic font-semibold" aria-hidden="true">
                   P
                 </span>
@@ -116,7 +117,7 @@ export function Footer({
               <li>
                 <button
                   type="button"
-                  onClick={() => handleExploreClick('Living Room')}
+                  onClick={() => onNavigateShop('Living Room')}
                   className="hover:text-[#FFFFFF] transition-colors cursor-pointer"
                 >
                   Living Room
@@ -125,7 +126,7 @@ export function Footer({
               <li>
                 <button
                   type="button"
-                  onClick={() => handleExploreClick('Dining')}
+                  onClick={() => onNavigateShop('Dining')}
                   className="hover:text-[#FFFFFF] transition-colors cursor-pointer"
                 >
                   Dining Room
@@ -134,7 +135,7 @@ export function Footer({
               <li>
                 <button
                   type="button"
-                  onClick={() => handleExploreClick('Bedroom')}
+                  onClick={() => onNavigateShop('Bedroom')}
                   className="hover:text-[#FFFFFF] transition-colors cursor-pointer"
                 >
                   Bedroom
@@ -143,7 +144,7 @@ export function Footer({
               <li>
                 <button
                   type="button"
-                  onClick={() => handleExploreClick('Storage')}
+                  onClick={() => onNavigateShop('Storage')}
                   className="hover:text-[#FFFFFF] transition-colors cursor-pointer"
                 >
                   Home Office
@@ -152,7 +153,7 @@ export function Footer({
               <li>
                 <button
                   type="button"
-                  onClick={() => handleExploreClick('All')}
+                  onClick={() => onNavigateShop('All')}
                   className="hover:text-[#FFFFFF] transition-colors cursor-pointer"
                 >
                   All Products
@@ -204,9 +205,13 @@ export function Footer({
                 </button>
               </li>
               <li>
-                <a href="#journal" className="hover:text-[#FFFFFF] transition-colors">
+                <button
+                  type="button"
+                  onClick={onNavigateJournal}
+                  className="hover:text-[#FFFFFF] transition-colors cursor-pointer"
+                >
                   Journal
-                </a>
+                </button>
               </li>
               <li>
                 <button

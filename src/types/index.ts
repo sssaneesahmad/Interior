@@ -14,21 +14,32 @@ export interface ProductFinish {
   swatchHex: string;
 }
 
+export interface ProductGalleryImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface Product {
   id: string;
   slug: string;
+  sku: string;
   name: string;
   category: Exclude<ProductCategory, 'All'>;
   space: SpaceSlug;
   price: number;
+  availability: 'In Stock' | 'Made to Order';
   image: string;
   alt: string;
+  gallery: ProductGalleryImage[];
   shortDescription: string;
   description: string;
   dimensions: string;
   materials: string;
+  careInstructions: string;
   leadTime: string;
   finishes: ProductFinish[];
+  pairedProductIds: string[];
 }
 
 export interface SpaceItem {
@@ -72,6 +83,14 @@ export interface CartItem {
   finish: string;
   quantity: number;
 }
+
+export type AppRoute =
+  | { page: 'home' }
+  | { page: 'shop'; category?: ProductCategory; space?: SpaceSlug | 'all' }
+  | { page: 'product'; slug: string }
+  | { page: 'cart' }
+  | { page: 'checkout' }
+  | { page: 'not-found' };
 
 export type InfoModalTopic =
   | 'philosophy'

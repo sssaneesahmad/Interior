@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Heart, Ruler, ShieldCheck, Truck, X } from 'lucide-react';
+import { ArrowRight, Heart, Ruler, ShieldCheck, Truck, X } from 'lucide-react';
 import type { Product } from '../types';
 import { ImageWithFallback } from './ImageWithFallback';
 
@@ -9,6 +9,7 @@ interface ProductModalProps {
   onClose: () => void;
   onAddToBag: (product: Product, finish: string) => void;
   onToggleWishlist: (product: Product) => void;
+  onNavigateProduct: (slug: string) => void;
 }
 
 export function ProductModal({
@@ -17,6 +18,7 @@ export function ProductModal({
   onClose,
   onAddToBag,
   onToggleWishlist,
+  onNavigateProduct,
 }: ProductModalProps) {
   const [selectedFinish, setSelectedFinish] = useState('');
 
@@ -157,36 +159,50 @@ export function ProductModal({
             </dl>
           </div>
 
-          <div className="flex items-center gap-3 pt-4 border-t border-[#E6DDD1]">
-            <button
-              type="button"
-              onClick={() => {
-                onAddToBag(product, selectedFinish);
-                onClose();
-              }}
-              className="flex-1 py-3.5 px-6 bg-[#292521] text-[#F7F3ED] text-[13px] font-medium tracking-[0.04em] rounded-[3px] hover:bg-[#171614] transition-colors cursor-pointer"
-            >
-              Add to Bag — {formatPrice(product.price)}
-            </button>
+          <div className="space-y-3 pt-4 border-t border-[#E6DDD1]">
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  onAddToBag(product, selectedFinish);
+                  onClose();
+                }}
+                className="flex-1 py-3.5 px-6 bg-[#292521] text-[#F7F3ED] text-[13px] font-medium tracking-[0.04em] rounded-[3px] hover:bg-[#171614] transition-colors cursor-pointer"
+              >
+                Add to Bag — {formatPrice(product.price)}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onToggleWishlist(product)}
+                aria-label={
+                  isWishlisted
+                    ? `Remove ${product.name} from wishlist`
+                    : `Save ${product.name} to wishlist`
+                }
+                aria-pressed={isWishlisted}
+                className="w-12 h-12 border border-[#C9B8A5] rounded-[3px] inline-flex items-center justify-center text-[#292521] hover:bg-[#F1EBE3] transition-colors shrink-0 cursor-pointer"
+              >
+                <Heart
+                  className={`w-4.5 h-4.5 ${
+                    isWishlisted ? 'fill-[#574638] text-[#574638]' : ''
+                  }`}
+                  strokeWidth={1.6}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
 
             <button
               type="button"
-              onClick={() => onToggleWishlist(product)}
-              aria-label={
-                isWishlisted
-                  ? `Remove ${product.name} from wishlist`
-                  : `Save ${product.name} to wishlist`
-              }
-              aria-pressed={isWishlisted}
-              className="w-12 h-12 border border-[#C9B8A5] rounded-[3px] inline-flex items-center justify-center text-[#292521] hover:bg-[#F1EBE3] transition-colors shrink-0 cursor-pointer"
+              onClick={() => {
+                onClose();
+                onNavigateProduct(product.slug);
+              }}
+              className="w-full py-2 text-[12.5px] font-medium tracking-[0.04em] text-[#574638] hover:text-[#171614] inline-flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              <Heart
-                className={`w-4.5 h-4.5 ${
-                  isWishlisted ? 'fill-[#574638] text-[#574638]' : ''
-                }`}
-                strokeWidth={1.6}
-                aria-hidden="true"
-              />
+              <span>View Full Product Page</span>
+              <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
             </button>
           </div>
         </div>

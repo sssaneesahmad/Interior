@@ -1,24 +1,33 @@
 import { useEffect, useState } from 'react';
 import { Menu, Search, ShoppingBag, X } from 'lucide-react';
+import type { AppRoute } from '../types';
 
 interface HeaderProps {
+  currentPage: AppRoute['page'];
   cartCount: number;
+  onNavigateHome: () => void;
+  onNavigateShop: () => void;
+  onNavigateSection: (sectionId: string) => void;
   onOpenSearch: () => void;
   onOpenCart: () => void;
   onOpenConsultation: () => void;
 }
 
-const NAV_LINKS = [
-  { label: 'Collections', href: '#featured-products' },
-  { label: 'Spaces', href: '#spaces' },
-  { label: 'Furniture', href: '#featured-products' },
-  { label: 'Our Story', href: '#our-story' },
-  { label: 'Journal', href: '#journal' },
-  { label: 'Contact', href: '#footer' },
+const NAV_ITEMS = [
+  { label: 'Collections', type: 'shop' as const },
+  { label: 'Spaces', type: 'section' as const, target: '#spaces' },
+  { label: 'Furniture', type: 'shop' as const },
+  { label: 'Our Story', type: 'section' as const, target: '#our-story' },
+  { label: 'Journal', type: 'section' as const, target: '#journal' },
+  { label: 'Contact', type: 'section' as const, target: '#footer' },
 ] as const;
 
 export function Header({
+  currentPage,
   cartCount,
+  onNavigateHome,
+  onNavigateShop,
+  onNavigateSection,
   onOpenSearch,
   onOpenCart,
   onOpenConsultation,
@@ -42,11 +51,12 @@ export function Header({
     };
   }, [mobileOpen]);
 
-  const handleLinkClick = (href: string) => {
+  const handleNavClick = (item: (typeof NAV_ITEMS)[number]) => {
     setMobileOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+    if (item.type === 'shop') {
+      onNavigateShop();
+    } else {
+      onNavigateSection(item.target);
     }
   };
 
@@ -56,7 +66,11 @@ export function Header({
         <div className="max-w-[1380px] mx-auto h-full px-5 sm:px-8 lg:px-12 flex items-center justify-between gap-6">
           {/* Brand Zone */}
           <a
-            href="#top"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigateHome();
+            }}
             className="font-editorial text-[25px] sm:text-[27px] font-medium tracking-[0.02em] text-[#171614] whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4"
           >
             Atelier Sorel
@@ -67,15 +81,25 @@ export function Header({
             aria-label="Primary"
             className="hidden lg:flex items-center gap-7 xl:gap-8 text-[12.5px] font-medium tracking-[0.06em] uppercase text-[#292521]"
           >
-            {NAV_LINKS.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="nav-underline py-1 whitespace-nowrap shrink-0 text-[#292521] hover:text-[#574638] transition-colors duration-200"
-              >
-                {item.label}
-              </a>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const isActive =
+                item.label === 'Collections' &&
+                (currentPage === 'shop' || currentPage === 'product');
+              return (
+                <button
+                  key={item.label}
+                  type="button"
+                  onClick={() => handleNavClick(item)}
+                  className={`nav-underline py-1 whitespace-nowrap shrink-0 transition-colors duration-200 cursor-pointer ${
+                    isActive
+                      ? 'text-[#574638] border-b border-[#574638]'
+                      : 'text-[#292521] hover:text-[#574638]'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Actions Zone */}
@@ -139,9 +163,16 @@ export function Header({
           <div className="relative ml-auto w-full max-w-sm h-full bg-[#F7F3ED] text-[#292521] flex flex-col justify-between p-6 sm:p-8 shadow-2xl border-l border-[#E6DDD1]">
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-[#E6DDD1]">
-                <span className="font-editorial text-2xl font-medium text-[#171614]">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    onNavigateHome();
+                  }}
+                  className="font-editorial text-2xl font-medium text-[#171614] cursor-pointer"
+                >
                   Atelier Sorel
-                </span>
+                </button>
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
@@ -153,18 +184,15 @@ export function Header({
               </div>
 
               <nav className="mt-8 flex flex-col gap-5" aria-label="Mobile links">
-                {NAV_LINKS.map((item) => (
-                  <a
+                {NAV_ITEMS.map((item) => (
+                  <button
                     key={item.label}
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleLinkClick(item.href);
-                    }}
-                    className="font-editorial text-[28px] leading-tight text-[#292521] hover:text-[#574638] transition-colors py-1"
+                    type="button"
+                    onClick={() => handleNavClick(item)}
+                    className="text-left font-editorial text-[28px] leading-tight text-[#292521] hover:text-[#574638] transition-colors py-1 cursor-pointer"
                   >
                     {item.label}
-                  </a>
+                  </button>
                 ))}
               </nav>
             </div>

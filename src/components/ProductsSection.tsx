@@ -10,6 +10,8 @@ interface ProductsSectionProps {
   wishlistIds: string[];
   onToggleWishlist: (product: Product) => void;
   onOpenProduct: (product: Product) => void;
+  onNavigateProduct: (slug: string) => void;
+  onNavigateShop: (category?: ProductCategory) => void;
   onQuickAdd: (product: Product) => void;
 }
 
@@ -31,6 +33,8 @@ export function ProductsSection({
   wishlistIds,
   onToggleWishlist,
   onOpenProduct,
+  onNavigateProduct,
+  onNavigateShop,
   onQuickAdd,
 }: ProductsSectionProps) {
   const [showSavedOnly, setShowSavedOnly] = useState(false);
@@ -83,10 +87,7 @@ export function ProductsSection({
 
           <button
             type="button"
-            onClick={() => {
-              onSelectCategory('All');
-              setShowSavedOnly(false);
-            }}
+            onClick={() => onNavigateShop(activeCategory)}
             className="group self-start md:self-auto inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.06em] uppercase text-[#292521] hover:text-[#574638] transition-colors whitespace-nowrap shrink-0 cursor-pointer py-2"
           >
             <span className="border-b border-[#292521]/40 group-hover:border-[#574638] pb-0.5">
@@ -203,9 +204,9 @@ export function ProductsSection({
                   <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#E6DDD1]">
                     <button
                       type="button"
-                      onClick={() => onOpenProduct(product)}
+                      onClick={() => onNavigateProduct(product.slug)}
                       className="w-full h-full block cursor-pointer text-left"
-                      aria-label={`View details for ${product.name}`}
+                      aria-label={`View ${product.name} product page`}
                     >
                       <ImageWithFallback
                         src={product.image}
@@ -243,7 +244,7 @@ export function ProductsSection({
                       </p>
                       <button
                         type="button"
-                        onClick={() => onOpenProduct(product)}
+                        onClick={() => onNavigateProduct(product.slug)}
                         className="mt-1.5 text-left block w-full cursor-pointer"
                       >
                         <h3 className="font-editorial text-[24px] leading-snug text-[#171614] group-hover:text-[#574638] transition-colors">

@@ -1,5 +1,6 @@
-import { useEffect, useState, type FormEvent } from 'react';
-import { Check, Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react';
+import { useEffect } from 'react';
+import { Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react';
+import { WHITE_GLOVE_THRESHOLD } from '../data/catalog';
 import type { CartItem } from '../types';
 import { ImageWithFallback } from './ImageWithFallback';
 
@@ -9,11 +10,11 @@ interface CartDrawerProps {
   onClose: () => void;
   onUpdateQuantity: (productId: string, finish: string, delta: number) => void;
   onRemoveItem: (productId: string, finish: string) => void;
-  onClearCart: () => void;
   onExploreCatalog: () => void;
+  onNavigateCart: () => void;
+  onNavigateCheckout: () => void;
+  onNavigateProduct: (slug: string) => void;
 }
-
-const WHITE_GLOVE_THRESHOLD = 2500;
 
 export function CartDrawer({
   isOpen,
@@ -21,16 +22,11 @@ export function CartDrawer({
   onClose,
   onUpdateQuantity,
   onRemoveItem,
-  onClearCart,
   onExploreCatalog,
+  onNavigateCart,
+  onNavigateCheckout,
+  onNavigateProduct,
 }: CartDrawerProps) {
-  const [step, setStep] = useState<'bag' | 'reservation' | 'confirmed'>('bag');
-  const [clientName, setClientName] = useState('');
-  const [clientEmail, setClientEmail] = useState('');
-  const [clientCity, setClientCity] = useState('');
-  const [formError, setFormError] = useState('');
-  const [orderRef, setOrderRef] = useState('');
-
   useEffect(() => {
     if (!isOpen) return;
     const prevOverflow = document.body.style.overflow;
@@ -46,12 +42,6 @@ export function CartDrawer({
     };
   }, [isOpen, onClose]);
 
-  useEffect(() => {
-    if (!isOpen && step === 'confirmed') {
-      setStep('bag');
-    }
-  }, [isOpen, step]);
-
   if (!isOpen) return null;
 
   const subtotal = items.reduce(
@@ -59,7 +49,10 @@ export function CartDrawer({
     0,
   );
   const totalCount = items.reduce((sum, item) => sum + item.quantity, 0);
-  const progressPct = Math.min(100, Math.round((subtotal / WHITE_GLOVE_THRESHOLD) * 100));
+  const progressPct = Math.min(
+    100,
+    Math.round((subtotal / WHITE_GLOVE_THRESHOLD) * 100),
+  );
   const remainingForFreeShipping = Math.max(0, WHITE_GLOVE_THRESHOLD - subtotal);
 
   const formatPrice = (amount: number) =>
@@ -68,28 +61,6 @@ export function CartDrawer({
       currency: 'USD',
       maximumFractionDigits: 0,
     }).format(amount);
-
-  const handleConfirmReservation = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!clientName.trim()) {
-      setFormError('Please enter your full name.');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clientEmail.trim())) {
-      setFormError('Please enter a valid email address.');
-      return;
-    }
-    if (!clientCity.trim()) {
-      setFormError('Please enter your delivery city.');
-      return;
-    }
-
-    const generatedRef = `AS-${Math.floor(100000 + Math.random() * 900000)}`;
-    setOrderRef(generatedRef);
-    setFormError('');
-    onClearCart();
-    setStep('confirmed');
-  };
 
   return (
     <div
@@ -108,17 +79,11 @@ export function CartDrawer({
         <div className="px-6 py-5 border-b border-[#E6DDD1] flex items-center justify-between">
           <div>
             <h2 className="font-editorial text-[26px] leading-none text-[#171614]">
-              {step === 'confirmed'
-                ? 'Reservation Summary'
-                : step === 'reservation'
-                ? 'Client Delivery Details'
-                : 'Shopping Bag'}
+              Shopping Bag
             </h2>
-            {step === 'bag' && (
-              <p className="text-[12px] text-[#625B54] mt-1 tabular-nums">
-                {totalCount} {totalCount === 1 ? 'piece' : 'pieces'} selected
-              </p>
-            )}
+            <p className="text-[12px] text-[#625B54] mt-1 tabular-nums">
+              {totalCount} {totalCount === 1 ? 'piece' : 'pieces'} selected
+            </p>
           </div>
           <button
             type="button"
@@ -132,38 +97,7 @@ export function CartDrawer({
 
         {/* Body */}
         <div className="flex-1 overflow-y-auto px-6 py-6">
-          {step === 'confirmed' ? (
-            <div className="py-10 text-center space-y-5">
-              <div className="w-12 h-12 mx-auto rounded-full bg-[#E6DDD1] flex items-center justify-center text-[#574638]">
-                <Check className="w-6 h-6" strokeWidth={1.8} aria-hidden="true" />
-              </div>
-              <div>
-                <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-[#574638]">
-                  REFERENCE {orderRef}
-                </p>
-                <h3 className="font-editorial text-[30px] text-[#171614] mt-1">
-                  Selection Reserved Locally
-                </h3>
-                <p className="text-[14px] leading-[1.65] text-[#4C453E] mt-3 max-w-sm mx-auto">
-                  Thank you, {clientName}. Your piece selection for{' '}
-                  <span className="font-medium text-[#171614]">{clientCity}</span>{' '}
-                  has been recorded in this session. Note: connect a live payment
-                  or order backend to dispatch formal studio invoices to{' '}
-                  <span className="font-medium text-[#171614]">{clientEmail}</span>.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setStep('bag');
-                  onClose();
-                }}
-                className="px-6 py-3 bg-[#292521] text-[#F7F3ED] text-[12.5px] font-medium tracking-[0.04em] rounded-[3px] hover:bg-[#171614] transition-colors cursor-pointer"
-              >
-                Continue Exploring
-              </button>
-            </div>
-          ) : items.length === 0 ? (
+          {items.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
               <div className="w-14 h-14 rounded-full bg-[#E6DDD1] flex items-center justify-center text-[#574638] mb-5">
                 <ShoppingBag className="w-6 h-6" strokeWidth={1.5} aria-hidden="true" />
@@ -182,64 +116,9 @@ export function CartDrawer({
                 }}
                 className="px-6 py-3 bg-[#292521] text-[#F7F3ED] text-[12.5px] font-medium tracking-[0.04em] rounded-[3px] hover:bg-[#171614] transition-colors cursor-pointer"
               >
-                Explore Collection
+                Explore All Products
               </button>
             </div>
-          ) : step === 'reservation' ? (
-            <form id="reservation-form" onSubmit={handleConfirmReservation} noValidate className="space-y-4">
-              <p className="text-[13.5px] leading-[1.6] text-[#4C453E] bg-[#F1EBE3] border border-[#E6DDD1] p-4">
-                Enter your contact details to create a local reservation summary
-                for white-glove delivery coordination.
-              </p>
-
-              <div>
-                <label htmlFor="cart-client-name" className="block text-[12px] font-medium text-[#292521] mb-1.5">
-                  Full Name *
-                </label>
-                <input
-                  id="cart-client-name"
-                  type="text"
-                  value={clientName}
-                  onChange={(e) => setClientName(e.target.value)}
-                  placeholder="Clara Lindqvist"
-                  className="w-full px-3.5 py-2.5 bg-[#FFFFFF] border border-[#C9B8A5] rounded-[3px] text-[14px] text-[#171614] focus:border-[#292521] focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="cart-client-email" className="block text-[12px] font-medium text-[#292521] mb-1.5">
-                  Email Address *
-                </label>
-                <input
-                  id="cart-client-email"
-                  type="email"
-                  value={clientEmail}
-                  onChange={(e) => setClientEmail(e.target.value)}
-                  placeholder="name@domain.com"
-                  className="w-full px-3.5 py-2.5 bg-[#FFFFFF] border border-[#C9B8A5] rounded-[3px] text-[14px] text-[#171614] focus:border-[#292521] focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="cart-client-city" className="block text-[12px] font-medium text-[#292521] mb-1.5">
-                  Delivery City & Country *
-                </label>
-                <input
-                  id="cart-client-city"
-                  type="text"
-                  value={clientCity}
-                  onChange={(e) => setClientCity(e.target.value)}
-                  placeholder="Zurich, Switzerland"
-                  className="w-full px-3.5 py-2.5 bg-[#FFFFFF] border border-[#C9B8A5] rounded-[3px] text-[14px] text-[#171614] focus:border-[#292521] focus:outline-none"
-                />
-              </div>
-
-              {formError && (
-                <p role="alert" className="text-[12.5px] text-[#7A3528]">
-                  {formError}
-                </p>
-              )}
-            </form>
           ) : (
             <div className="space-y-6">
               {/* Complimentary White-Glove Delivery Progress */}
@@ -272,20 +151,36 @@ export function CartDrawer({
                     key={`${item.product.id}-${item.finish}`}
                     className="py-5 first:pt-0 flex gap-4"
                   >
-                    <div className="w-24 h-20 shrink-0 bg-[#E6DDD1] overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onClose();
+                        onNavigateProduct(item.product.slug);
+                      }}
+                      className="w-24 h-20 shrink-0 bg-[#E6DDD1] overflow-hidden cursor-pointer"
+                    >
                       <ImageWithFallback
                         src={item.product.image}
                         alt={item.product.alt}
                         className="w-full h-full object-cover"
                       />
-                    </div>
+                    </button>
 
                     <div className="flex-1 min-w-0 flex flex-col justify-between">
                       <div className="flex items-start justify-between gap-2">
                         <div>
-                          <h3 className="font-editorial text-[20px] leading-tight text-[#171614]">
-                            {item.product.name}
-                          </h3>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              onClose();
+                              onNavigateProduct(item.product.slug);
+                            }}
+                            className="text-left cursor-pointer"
+                          >
+                            <h3 className="font-editorial text-[20px] leading-tight text-[#171614] hover:text-[#574638] transition-colors">
+                              {item.product.name}
+                            </h3>
+                          </button>
                           <p className="text-[12px] text-[#625B54] mt-0.5">
                             {item.finish}
                           </p>
@@ -340,41 +235,36 @@ export function CartDrawer({
         </div>
 
         {/* Footer */}
-        {items.length > 0 && step !== 'confirmed' && (
-          <div className="px-6 py-5 border-t border-[#E6DDD1] bg-[#F1EBE3] space-y-4">
-            <div className="flex items-center justify-between text-[15px]">
+        {items.length > 0 && (
+          <div className="px-6 py-5 border-t border-[#E6DDD1] bg-[#F1EBE3] space-y-3">
+            <div className="flex items-center justify-between text-[15px] pb-1">
               <span className="text-[#4C453E]">Subtotal</span>
               <span className="font-medium text-[#171614] tabular-nums text-[17px]">
                 {formatPrice(subtotal)}
               </span>
             </div>
 
-            {step === 'bag' ? (
-              <button
-                type="button"
-                onClick={() => setStep('reservation')}
-                className="w-full py-3.5 px-6 bg-[#292521] text-[#F7F3ED] text-[13px] font-medium tracking-[0.04em] rounded-[3px] hover:bg-[#171614] transition-colors cursor-pointer"
-              >
-                Proceed to Reservation
-              </button>
-            ) : (
-              <div className="flex gap-3">
-                <button
-                  type="button"
-                  onClick={() => setStep('bag')}
-                  className="px-4 py-3.5 border border-[#C9B8A5] text-[#292521] text-[13px] font-medium rounded-[3px] hover:bg-[#E6DDD1] transition-colors cursor-pointer"
-                >
-                  Back
-                </button>
-                <button
-                  type="submit"
-                  form="reservation-form"
-                  className="flex-1 py-3.5 px-6 bg-[#292521] text-[#F7F3ED] text-[13px] font-medium tracking-[0.04em] rounded-[3px] hover:bg-[#171614] transition-colors cursor-pointer"
-                >
-                  Confirm Reservation
-                </button>
-              </div>
-            )}
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                onNavigateCheckout();
+              }}
+              className="w-full py-3.5 px-6 bg-[#292521] text-[#F7F3ED] text-[13px] font-medium tracking-[0.04em] rounded-[3px] hover:bg-[#171614] transition-colors cursor-pointer"
+            >
+              Proceed to Checkout
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                onNavigateCart();
+              }}
+              className="w-full py-3 px-6 border border-[#C9B8A5] bg-[#F7F3ED] text-[#292521] text-[12.5px] font-medium tracking-[0.04em] rounded-[3px] hover:border-[#292521] transition-colors cursor-pointer"
+            >
+              View Full Shopping Bag
+            </button>
           </div>
         )}
       </aside>
